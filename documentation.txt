@@ -1,0 +1,40 @@
+Before any measurements, it is very important to know that there are more factors that affect the execution time (not only population size, simulation time and number of threads). The other factors are  how much
+of the initial population from the file is infected ( % of inf persons), infected duration and immune duration. If there are a lot of infected persons, the program will be significantly slower.
+
+1.For a 50K persons file with a 500 x 500 grid, 50 simulation time, infected duration of 5 and immune duration of 1 and 5% initially infected persons here are the results:
+Serial Execution Time: 2.132000 seconds
+Parallel Execution Time: 0.591000 seconds
+Speedup: 3.607445
+at the end of the simulation, only around 50 persons are infected and around 10 are immune, quite a small number from the initially 2.5k
+
+2.For the same data, but a 25% of initially infected persons, here are the results:
+Serial Execution Time: 6.648000 seconds
+Parallel Execution Time: 1.823000 seconds
+Speedup: 3.646736
+at the end of the simulation, only around 150 persons are infected and around 50 are immune, quite a small number from the initially 12.5K
+total infection count:33K
+
+3.If I run one more test with the same file  (25 % infected) but this time I increase the infected duration from 5 to 20, the results will be a little different...
+Serial Execution Time: 65.995000 seconds
+Parallel Execution Time: 16.717000 seconds
+Speedup: 3.947778
+at the end of the simulation, only around 12500 persons are infected and around 1500 are immune
+total infection count:102K
+
+To sum everything up, the number of infected persons during the simulation is very important, especially if the population size is big 
+
+For the data at point no. 2, here are the results of the speedup using a different number of threads:
+2 threads :1.88
+4 threads :3.64
+8 threads :5.63
+16 threads:7.70
+
+For the data at point no. 3, here are the results of the speedup using a different number of threads:
+2 threads :2.01
+4 threads :3.94
+8 threads :7.04
+16 threads:8.07
+
+The values of the speedup seem normal and the conclusion is simple: the more threads, the better
+
+
